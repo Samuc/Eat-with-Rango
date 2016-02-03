@@ -1,0 +1,110 @@
+{% extends 'rango/base.html' %}
+
+{% load static %}
+
+{% block title %}Index{% endblock %}
+
+{% block body_block %}
+{% if user.is_authenticated %}
+
+<div class="page-header" id="content">
+
+
+<button href="#" id="incfont">Increase font size</button>
+<button href="#" id="decfont">Decrease font size</button>
+<br>
+<button href="#" id="normalfont">Normal font size</button>
+<button href="#" id="bigfont">Big font size</button>
+<button href="#" id="smallfont">Small font size</button>
+
+
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('#incfont').click(function(){
+        curSize= parseInt($('#content').css('font-size')) + 2;
+        $('#content').css('font-size', curSize);
+        curSize= parseInt($('#titulo').css('font-size')) + 2;
+        $('#titulo').css('font-size', curSize);
+        });
+  $('#decfont').click(function(){
+        curSize= parseInt($('#content').css('font-size')) - 2;
+        $('#content').css('font-size', curSize);
+        curSize= parseInt($('#titulo').css('font-size')) - 2;
+        $('#titulo').css('font-size', curSize);
+        });
+
+  $('#normalfont').click(function(){
+        $('#content').css('font-size', 14);
+        $('#titulo').css('font-size', 36);
+        });
+  $('#bigfont').click(function(){
+        $('#content').css('font-size', 20);
+        $('#titulo').css('font-size', 50);
+        });
+  $('#smallfont').click(function(){
+        $('#content').css('font-size', 8);
+        $('#titulo').css('font-size', 26);
+        });
+ });
+</script>
+
+  <h1 id="titulo">Rango says... hello {{ user.username }}!</h1>
+  {% else %}
+  <h1 id="titulo">Rango says... you are not logged. Register or login when you want!</h1>
+  {% endif %}
+
+  <div class="row placeholders" >
+    <div class="col-xs-12 col-sm-6 placeholder">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Bares</h3>
+        </div>
+      </div>
+      <a href="/rango/add_bar/">    <strong>Add a New Bar</strong></a><br />
+
+      {% if bars %}
+      <ul id="listbars" class="list-group">
+        {% for bar in bars %}
+        <li  class="list-group-item"><a href="{% url 'bar'  bar.url %}">{{ bar.nombre }}</a></li>
+        {% endfor %}
+        <br>
+        <br>
+
+        <img  width="80%" src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
+      </ul>
+      {% else %}
+      <strong>There are no bars present.</strong>
+      {% endif %}
+
+    </div>
+    <div class="col-xs-12 col-sm-6 placeholder">
+
+
+      {% if user_login.picture%}
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Your profile photo</h3>
+        </div>
+      </div>
+      <img  width="80%" src="../media/{{user_login.picture}}" alt="Profile picture" />
+      {% else %}
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Rango welcomes you!!</h3>
+        </div>
+      </div>
+      <img  width="80%" src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
+      {% endif %}
+
+    </div>
+
+
+
+  </div>
+</div>
+
+
+
+  {% endblock %}

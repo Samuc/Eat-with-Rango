@@ -1,0 +1,70 @@
+CAMBIAR TODO PARA MOSTRAR TAPA EN CASO DE HACER FALTA
+CAMBIAR TODO PARA MOSTRAR TAPA EN CASO DE HACER FALTA
+CAMBIAR TODO PARA MOSTRAR TAPA EN CASO DE HACER FALTA
+CAMBIAR TODO PARA MOSTRAR TAPA EN CASO DE HACER FALTA
+CAMBIAR TODO PARA MOSTRAR TAPA EN CASO DE HACER FALTA
+CAMBIAR TODO PARA MOSTRAR TAPA EN CASO DE HACER FALT
+
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Index{% endblock %}
+
+{% block body_block %}
+{% if user.is_authenticated %}
+<div class="page-header">
+
+  <h1>Rango says... hello {{ user.username }}!</h1>
+  {% else %}
+  <h1>Rango says... hello world!</h1>
+  {% endif %}
+</div>
+
+<div class="row placeholders">
+  <div class="col-xs-12 col-sm-6 placeholder">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+            <h3 class="panel-title">Bares</h3>
+    </div>
+</div>
+<a href="/rango/add_bar/">    <strong>Add a New Bar</strong></a><br />
+
+    {% if bars %}
+    <ul class="list-group">
+      {% for bar in bars %}
+      <li class="list-group-item"><a href="{% url 'bar'  bar.url %}">{{ bar.nombre }}</a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <strong>There are no bars present.</strong>
+    {% endif %}
+
+  </div>
+  <div class="col-xs-12 col-sm-6 placeholder">
+
+
+    <div class="panel panel-primary">
+            <div class="panel-heading">
+                    <h3 class="panel-title">Tapas</h3>
+            </div>
+    </div>
+
+    {% if tapas %}
+    <ul class="list-group">
+      {% for tapa in tapas %}
+      <li class="list-group-item"><a href="{{tapa.url}}">{{ tapa.title }}</a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <strong>There are no bars present.</strong>
+    {% endif %}
+  </div>
+
+
+  <p> Visits: {{ visits }}</p>
+</div>
+<img  width="30%"" src="{% static "images/rango.jpg" %}" alt="Picture of Rango" /> <!-- New line -->
+
+
+                                                                               {% endblock %}

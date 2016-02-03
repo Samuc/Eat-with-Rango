@@ -1,0 +1,106 @@
+
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Index{% endblock %}
+
+{% block body_block %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html>
+  <div class="page-header">
+
+
+    <h1 id="name_bar">Visit's Highchart </h1>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Chart</h3>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+    $(function(){
+
+    var bars;
+    var visits;
+
+    $.ajax({
+        url: "{% url 'reclama_bares' %}",
+        type: 'get',
+        success: function(bares) {
+            bars = bares;
+        },
+        failure: function(bares) {
+            alert('esto no va');
+        }
+    });
+    $.ajax({
+        url: "{% url 'reclama_visitas' %}",
+        type: 'get',
+        success: function(visitas) {
+            visits = visitas;
+            Visualiza_chart (bars, visits);
+        },
+        failure: function(visitas) {
+            alert('esto no va');
+        }
+    });
+
+
+    function Visualiza_chart (bars, visits) {
+
+var out = '';
+  for (var p in bars) {
+    out += 'Bar number: ' + p + ': ' + bars[p] + " - Visits: "  + visits[p] + '\n';
+  }
+    //alert(out);
+    //Con ésto saldría un mensaje por pantalla con los bares y visitas
+
+    $(function () {
+
+        var name_bar = $(this).attr("data-bar");
+    $('#container').highcharts({
+
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Bar Visits'
+        },
+        xAxis: {
+            categories:bars
+        },
+        yAxis: {
+            title: {
+                text: 'Bar/Visits'
+            }
+        },
+        series: [{
+            name: 'Bar visits',
+            data: visits
+        }],
+    });
+});
+    };
+
+});
+
+  </script>
+  <div id="container" style="height: 300px" >
+  <script type="text/javascript">
+
+
+</script>
+</div>
+
+
+
+
+    {% endif %}
+</html>
+{% endblock %}
