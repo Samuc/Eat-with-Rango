@@ -98,9 +98,22 @@ var out = '';
 </script>
 </div>
 
+{% else %}
+<html>
+  <div class="page-header">
 
+
+    <h1 id="name_bar">Please, login to see Visit's Highchart </h1>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Login in if you want to see this panel</h3>
+      </div>
+    </div>
+  </div>
 
 
     {% endif %}
+
 </html>
 {% endblock %}
