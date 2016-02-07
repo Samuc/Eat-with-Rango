@@ -1,4 +1,28 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Index{% endblock %}
+
 {% block body_block %}
+{% if user.is_authenticated %}
+
+
+<div class="row placeholders">
+  <div class="col-xs-12 col-sm-6 placeholder">
+
+    <div class="panel panel-primary">
+            <div class="panel-heading">
+                    <h3 class="panel-title">Rango welcomes you to the Login page, but he can only says that you are already loged in!!!</h3>
+
+<br>
+<p><strong>Eath with Rango @ 2016<strong></p>
+            </div>
+    </div>
+    <img  width="80%"" src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
+  </div>
+
+{% else %}
 
 <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
 
@@ -12,4 +36,5 @@
 <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" >Sign in</button>
 </form>
 
+{% endif %}
 {% endblock %}

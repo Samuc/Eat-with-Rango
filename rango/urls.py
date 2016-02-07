@@ -4,8 +4,8 @@ from rango import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^about$', views.about, name='about'),
-    url(r'^highchart$', views.highchart, name='highchart'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^highchart/$', views.highchart, name='highchart'),
     url(r'^admin/', admin.site.urls),
     url(r'^bar/(?P<bar_name_url>[\w\-]+)/$', views.bar, name='bar'),
     url(r'^bar/(?P<bar_name_url>[\w\-]+)/add_tapa/$', views.add_tapa, name='add_tapa'),

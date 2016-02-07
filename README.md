@@ -1,8 +1,10 @@
 # Eat-with-Rango-Bares-Tapas
 Final proyect for IV course - University of Granada
 
-# Descripción
 
+![Build Status](https://travis-ci.org/Samuc/Eat-with-Rango.svg)](https://travis-ci.org/Samuc/Eat-with-Rango)
+
+# Descripción
 Este proyecto  está desarrollado para las asignaturas IV (Infraestructura Virtual) y DAI (Diseño de Aplicaciones de Internet) de la UGR (Universidad de Granada).
 
 Se ha realizado conjuntamente para las dos asignaturas porque en DAI desarrollamos la aplicación web y el objetivo del proyecto de IV es proporcionar soporte, mediante una infraestructura virtual a dicha aplicación.
@@ -56,7 +58,9 @@ Entre ellas, una plataforma PaaS como es heroku, y  las máquinas virtuales que 
 
 La herramienta de construcción que utiliza el proyecto de Django es **manage.py**, el cual permite realizar varias operaciones de control y ejecutar la aplicación.
 
-Para la instalación de dependencias hace uso de un archivo requirements.txt.
+## Requerimientos
+Para la instalación de dependencias hace uso del archivo requirements.txt, que podemos ver [aqui](https://github.com/Samuc/Eat-with-Rango/blob/master/requirements.txt).
+
 Para instalar las dependencias ejecutamos:
 `sudo pip install -r requirements.txt`
 
@@ -71,7 +75,19 @@ En el caso de tener el puerto 80 libre, podemos asignarselo con:
 
 
 # Desarrollo basado en pruebas
-Para los tests para el despliegue de la aplicación, Django ofrece su propio sistema, utilizando un archivo *test.py*,  que contendrá los tests que queramos hacerle a la aplicación.
+Para los tests para el despliegue de la aplicación, Django ofrece su propio sistema, unittest, utilizando un archivo *test.py*,  que contendrá los tests que queramos hacerle a la aplicación.
 
 Los tests se pueden ejecutar con:
 `python manage.py test`
+
+El archivo tests.py se encuentra [aquí](https://github.com/Samuc/Eat-with-Rango/blob/master/tests.py)
+
+Éste tests, comproborará los casos de acceso a las diferentes páginas de la aplicación web con respuesta de OK, creación de bares y acceso a la página del mismo, y creación de tapas.
+
+Si queremos saber más sobre el sistema de tests de Django, podemos entrar [aquí](https://docs.python.org/2/library/unittest.html).
+
+![Tests](http://i.cubeupload.com/4mAUi8.jpg)
+
+
+# Integración contínua - Travis
+Para la automatización del proceso de pruebas y para desarrollar el proyecto bajo el concepto de Integración Contínua, he usado [Travis-CI](https://travis-ci.org/) para la integración continua. La configuración para Travis-CI se indica en el fichero .travis.yml.
