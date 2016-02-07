@@ -20,4 +20,4 @@ install:
 
 #Comando para ejecutar tests:
 script:
-  - sudo python manage.py tests.py
+  - sudo python manage.py tests
