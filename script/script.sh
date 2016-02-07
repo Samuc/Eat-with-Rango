@@ -12,4 +12,4 @@ sudo apt-get install zlib1g-dev
 sudo easy_install pip
 sudo -H pip install Pillow --upgrade
 sudo pip install django --upgrade
-sudo pip install -r requirements.txt
+cd .. && sudo pip install -r requirements.txt
