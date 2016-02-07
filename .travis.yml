@@ -19,4 +19,4 @@ install:
 
 #Comando para ejecutar tests:
 script:
-  - python manage.py test
+  - python  tests.py
