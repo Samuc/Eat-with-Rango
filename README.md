@@ -91,7 +91,7 @@ Y para realizar el despliegue en Azure, he usado las herramientas [Ansible](http
 Para más información sobre el despliegue, ir a [Documentación - Despliegue en Azure](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Documentacion_Azure.md).
 
 
-Una vez terminado el despligue, podemos ver la apliacicón en la página web de la máquina creada en Azure:
+Una vez terminado el despligue, podemos ver la aplicación en la página web de la máquina creada en Azure:
 ![Captura de Eat-with-Rango desplegada con Vagrant en Azure](http://i.cubeupload.com/JwiErb.jpg)
 La url sobre la que está corriendo actualmente mi aplicación es: http://rango2-service-rknsl.cloudapp.net/rango/
 La web estará activa temporalmente, hasta que la suscripción con Azure termine.
