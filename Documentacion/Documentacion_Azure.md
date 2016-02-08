@@ -6,11 +6,50 @@ Para mi aplicación he elegido como servicio IaaS, usar [Azure](https://azure.mi
 Y para realizar el despliegue en Azure, he usado las herramientas [Ansible](http://www.ansible.com/) y [Vagrant](https://www.vagrantup.com/).
 
 
-Vamos a configurar el Vagrantfile para crear una máquina de Azure donde desplegar la aplicación.
+# Script de despliegue automático
+Antes de explicar cómo hemos realizado toda la configuración del despliegue, he creado un script para hacer el despliegue automáticamente.
+Para un primer uso, tenemos el script **azure_script.sh**:
+```
+#!/bin/bash
+vagrant box add azure https://github.com/msopentech/vagrant-azure/raw/master/dummy.box
+vagrant up --provider=azure
+vagrant provision
+```
 
-Antes de todo, si no tenemos instalado VirtualBox, AzureCLI y Vagrant, es el momento de instalarlo.
+En caso de usar el script fuera del directorio del repositorio, sustituir por el siguiente contenido:
+```
+#!/bin/bash
 
-El primer paso es instalar "Vagrant Azure Provider" con el siguiente comando:
+git clone https://github.com/Samuc/Eat-with-Rango.git
+cd Eat-with-Rango/Vagrant-Azure/
+chmod 777 *
+vagrant box add azure https://github.com/msopentech/vagrant-azure/raw/master/dummy.box
+vagrant up --provider=azure
+vagrant provision
+```
+
+Para ejecutar de nuevo la provisión, como la máquina virtual ya está creada, solo necesitaremos el contenido del siguiente script: (**azure_script_only_provision.sh**)
+```
+#!/bin/bash
+vagrant provision
+```
+
+En caso de usar el script fuera del directorio del repositorio, sustituir por el siguiente contenido:
+```
+#!/bin/bash
+
+git clone https://github.com/Samuc/Eat-with-Rango.git
+cd Eat-with-Rango/Vagrant-Azure/
+chmod 777 *
+vagrant provision
+```
+
+# Configuración del despliegue documentada
+Hemos configurado el Vagrantfile para crear una máquina de Azure donde desplegar la aplicación.
+
+Antes de todo, debemos tener instalado VirtualBox, AzureCLI y Vagrant.
+
+El primer paso ha sido instalar "Vagrant Azure Provider" con el siguiente comando:
  `vagrant plugin install vagrant-azure`
 
 ![Install Vagrant Azure Provider](http://i.cubeupload.com/VPBqoc.jpg)
@@ -20,7 +59,7 @@ El primer paso es instalar "Vagrant Azure Provider" con el siguiente comando:
 ![login](http://i.cubeupload.com/qMCJLH.jpg)
 
 
-A continuación tenemos que editar en el archivo ansible_host, el nombre del host a "localhost" y la dirección IP (será la IP privada de la máquina de azure que se creará con Vagrant),  y lo llamaremos así desde el el playbook aprovisionamiento.yml.:
+A continuación hemos tenido que que editar en el archivo ansible_host, el nombre del host a "localhost" y la dirección IP (será la IP privada de la máquina de azure que se creará con Vagrant),  y lo hemos llamado así desde el el playbook aprovisionamiento.yml.:
 
 **ansible_hosts:**
 ```
@@ -29,7 +68,7 @@ A continuación tenemos que editar en el archivo ansible_host, el nombre del hos
 
 ```
 
-Exportamos la variable de entorno de Ansible para que reconozca el host:
+Hemos exportado la variable de entorno de Ansible para que reconozca el host:
 
  `export ANSIBLE_HOSTS=~/ansible_hosts`
 
@@ -74,11 +113,11 @@ Exportamos la variable de entorno de Ansible para que reconozca el host:
 
 ```
 
-En este fichero .yml, le indicamos las ordenes necesarias a ejecutar en la máquina de azure, y los paquetes a instalar necesarios para la app.
-Después de ello, también se le indica que se descargue el repo de la app, instale los paquetes necesarios del mismo, y que ejecute la apliacción por el puerto 80.
+En este fichero .yml, le hemos indicado las ordenes necesarias a ejecutar en la máquina de azure, y los paquetes a instalar necesarios para la app.
+Después de ello, también se le ha indicado que se descargue el repo de la app, instale los paquetes necesarios del mismo, y que ejecute la apliacción por el puerto 80.
 
 
-Ahora, debemos generar los certificados de Azure, con los siguientes comandos:
+Ahora, hemos generado los certificados de Azure, con los siguientes comandos:
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout azurevagrant.key -out azurevagrant.key
 chmod 600 azurevagrant.key
@@ -88,7 +127,7 @@ openssl x509 -inform pem -in azurevagrant.key -outform der -out azurevagrant.cer
 El archivo azurevagrant.cer generado, deberemos subirlo al apartado "certificados del panel de configuración de Azure, [aquí](https://manage.windowsazure.com/). Uso la versión antigua del panel de Azure porque es más fácil, hay que ir a configuración->Certificados de Administración->Agregar, y ahí subimos nuestro certificado generado.
 
 
-Ahora debemos generar el fichero .pem, para que vagrant lo pueda leer.
+Ahora generamos el fichero .pem, para que vagrant lo pueda leer.
 Ejecutamos los siguientes comandos:
 ```
 openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out azurevagrant.pem
