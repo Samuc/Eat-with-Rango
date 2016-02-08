@@ -179,7 +179,7 @@ Si ocurriese algún error en el aprovisionamiento, ahora debemos ejecutar otra o
 
 Por último, entramos a la dirección de la máquina de azure en el navegador web. La dirección podemos verla también desde el panel de Azure.
 Entramos en la dirección, y podremos ya usar nuestra aplicación:
-![Captura de Eat-with-Rango desplegada con Vagrant en Azure](http://i.cubeupload.com/HPA0Fh.jpg)
+![Captura de Eat-with-Rango desplegada con Vagrant en Azure](http://i.cubeupload.com/JwiErb.jpg)
 
 
 Si queremos conectarnos a nuestra máquina por ssh, ejecutamos:
