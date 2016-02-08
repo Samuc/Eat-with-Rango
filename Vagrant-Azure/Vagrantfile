@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       azure.subscription_id = 'd6c58002-4537-471f-ab27-888d8170aca4'
       azure.vm_image = 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_2-LTS-amd64-server-20150506-en-us-30GB'
       azure.vm_name = 'EatRango'
-      azure.vm_password = 'Asdfghjk1+'
+      azure.vm_password = 'Aqui_va_mi_password'
       azure.vm_location = 'Central US'
       azure.ssh_port = '22'
       azure.tcp_endpoints = '80:80'

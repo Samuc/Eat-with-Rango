@@ -2,18 +2,17 @@ from fabric.api import run, local, hosts, cd
 from fabric.contrib import django
 
 
-#Descargar la app
-def getApp():
+#Descarga el repositorio
+def downloadApp():
 	run('sudo apt-get update')
 	run('sudo apt-get install -y git')
+    	run('sudo rm -rf Eat-with-Rango/')
    	run('sudo git clone https://github.com/Samuc/Eat-with-Rango.git')
 
-def onlygetRepo():
-    run('sudo git clone https://github.com/Samuc/Eat-with-Rango.git')
 
-#Instalar la app
+#Instalar las dependencias necesarias
 def install():
-    run('sudo apt-get install make')
+    run('sudo apt-get install -y make')
     run('cd Eat-with-Rango/ && sudo make install')
 
 #Ejecucion de test
@@ -23,12 +22,3 @@ def test():
 #Ejecucion de la aplicacion
 def runApp():
 	run('cd Eat-with-Rango/ && sudo python manage.py runserver 0.0.0.0:80')
-
-
-#Crea la maquina en azure
-def crearMaquina():
-	run('cd Eat-with-Rango/ && make crearAzure')
-
-#Provisiona la maquina en azure
-def provisionarMaquina():
-	run('cd Eat-with-Rango/ && make provisionAzure')

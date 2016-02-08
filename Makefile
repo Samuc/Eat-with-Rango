@@ -1,13 +1,13 @@
 install:
 	sudo apt-get update
-	sudo apt-get install python-setuptools
-	sudo apt-get install python-dev
-	sudo apt-get install build-essential
-	sudo apt-get install git
-	sudo apt-get install pkg-config
-	sudo apt-get install libtiff4-dev
-	sudo apt-get install libjpeg8-dev
-	sudo apt-get install zlib1g-dev
+	sudo apt-get install -y python-setuptools
+	sudo apt-get install -y python-dev
+	sudo apt-get install -y build-essential
+	sudo apt-get install -y git
+	sudo apt-get install -y pkg-config
+	sudo apt-get install -y libtiff4-dev
+	sudo apt-get install -y libjpeg8-dev
+	sudo apt-get install -y zlib1g-dev
 	sudo easy_install pip
 	sudo -H pip install Pillow --upgrade
 	sudo pip install django --upgrade
@@ -19,16 +19,9 @@ test:
 run:
 	sudo python manage.py runserver 0.0.0.0:80
 
-crearAzure:
-	cd Vagrant-Azure
-	vagrant box add azure https://github.com/msopentech/vagrant-azure/raw/master/dummy.box
-	vagrant up --provider=azure
-	vagrant provision
-	sudo vagrant up --provider=azure
-
-provisionAzure:
-	cd Vagrant-Azure  && vagrant provision
 
 azure:
-	sudo vagrant provision
-	fab -H samu@rango2-service-rknsl.cloudapp.net runApp
+	fab -H vagrant@40.78.150.231:22 downloadApp
+	fab -H vagrant@40.78.150.231:22 install
+	fab -H vagrant@40.78.150.231:22 test
+	fab -H vagrant@40.78.150.231:22 runApp
