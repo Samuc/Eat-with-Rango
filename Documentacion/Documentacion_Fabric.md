@@ -101,7 +101,7 @@ Ejecutar aplicación:
 	fab -H vagrant@40.78.150.231:22 runApp
 ```
 
-Al temrinar las 4 órdenes, se ejecutará en la máquina la apliación, tal como vemos en la siguiente imagen:
+Al terminar las 4 órdenes, se ejecutará en la máquina la apliación, tal como vemos en la siguiente imagen:
 ![App corriendo utilizando fabric ](http://i.cubeupload.com/oiHhfI.jpg)
 
 
