@@ -3,6 +3,7 @@ Final proyect for IV course - University of Granada
 
 
 [![Build Status](https://travis-ci.org/Samuc/Eat-with-Rango.svg)](https://travis-ci.org/Samuc/Eat-with-Rango)
+[![Snap-CI](https://snap-ci.com/Samuc/Eat-with-Rango/branch/master/build_image)](https://snap-ci.com/Samuc/Eat-with-Rango/branch/master)
 
 # Descripción
 Este proyecto  está desarrollado para las asignaturas IV (Infraestructura Virtual) y DAI (Diseño de Aplicaciones de Internet) de la UGR (Universidad de Granada).
@@ -89,7 +90,13 @@ Si queremos saber más sobre el sistema de tests de Django, podemos entrar [aqu�
 ![Tests](http://i.cubeupload.com/4mAUi8.jpg)
 
 
-# Integración contínua - Travis
+# Integración contínua - Travis-CI
 Para la automatización del proceso de pruebas y para desarrollar el proyecto bajo el concepto de Integración Contínua, he usado [Travis-CI](https://travis-ci.org/) para la integración continua. La configuración para Travis-CI se indica en el fichero .travis.yml.
 
-Para más información, ir [aquí](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Documentacion_Travis.md)
+Para más información, ir [aquí](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Documentacion_Travis.md).
+
+
+# Integración contínua - SNAP-CI
+También hemos integrado contínuamente la aplicación en SNAP-CI.
+
+Para más información, ir [aquí](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Documentacion_Snap.md).
