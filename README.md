@@ -35,7 +35,7 @@ Entre ellas, una plataforma PaaS como es heroku, y  las máquinas virtuales que 
 - Snap-CI y Travis para la integración contínua
 - Como servicio PaaS he usado Heroku
 - Como servicio IaaS he usado Azure
-
+- Fabric para el despliegue automático.
 
 La herramienta de construcción que utiliza el proyecto de Django es **manage.py**, el cual permite realizar varias operaciones de control y ejecutar la aplicación.
 
@@ -95,3 +95,9 @@ Una vez terminado el despligue, podemos ver la aplicación en la página web de 
 ![Captura de Eat-with-Rango desplegada con Vagrant en Azure](http://i.cubeupload.com/JwiErb.jpg)
 La url sobre la que está corriendo actualmente mi aplicación es: http://rango2-service-rknsl.cloudapp.net/rango/
 La web estará activa temporalmente, hasta que la suscripción con Azure termine.
+
+
+# Despliegue automático - Fabric
+Para el despliegue automático, he eledigo [Fabric](http://docs.fabfile.org/), ya que es una biblioteca de Python, por lo que es la herramienta adecuada a usar con nuestro proyecto en Django.
+
+Para ver información detallada sobre éste despliegue, ir [aquí](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Documentacion_Fabric.md).
