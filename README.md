@@ -3,40 +3,20 @@ Final proyect for IV course - University of Granada
 
 
 [![Build Status](https://travis-ci.org/Samuc/Eat-with-Rango.svg)](https://travis-ci.org/Samuc/Eat-with-Rango)
+
 [![Snap-CI](https://snap-ci.com/Samuc/Eat-with-Rango/branch/master/build_image)](https://snap-ci.com/Samuc/Eat-with-Rango/branch/master)
 
-# Descripción
+[![Azure](http://azuredeploy.net/deploybutton.png)](http://rango2-service-rknsl.cloudapp.net/rango/)
+
+
+# Descripción - Eat with Rango
 Este proyecto  está desarrollado para las asignaturas IV (Infraestructura Virtual) y DAI (Diseño de Aplicaciones de Internet) de la UGR (Universidad de Granada).
 
 Se ha realizado conjuntamente para las dos asignaturas porque en DAI desarrollamos la aplicación web y el objetivo del proyecto de IV es proporcionar soporte, mediante una infraestructura virtual a dicha aplicación.
 
+La idea se centra en una aplicación web que contiene información acerca de bares que visitar, la localización de éstos, las tapas que hay disponibles.
 
- La idea se centra en una aplicación web que contiene información acerca de bares que visitar, la localización de éstos, las tapas que hay disponibles.
-
-En cada bar mostrará las visitas que ha generado, cada vez que se visite la sección de ese bar en la aplicación, subirán sus visitas.
-
-Cada bar, tendrá su lista de tapas, a las que se podrá votar (con un like), para ver cuáles gusta más a los usuarios.
-
-La aplicación contiene un formulario de Login y de Registro.
-
-El registro de usuarios permite añadir una imagen de avatar para el perfil del usuario.
-
-Los usuarios logeados, podrán hacer "logout", añadir Bares, y añadir tapas a esos bares.
-
-Cada bar, se podrá crear añadiendo su nombre y una dirección.
-Gracias a ésta dirección, si está bien escrita, una vez se visualice el bar y la lista de tapas, debajo mostrará un mapa (con easy_maps) localizando el bar en su dirección correcta.
-
-Al añadir tapa, se insertará el nombre de la tapa y el bar al que pertenece.
-
-Una vez insertada, a ésta tapa podremos darle a "like" y su contador irá subiendo al refrescar la página. Igual que las visitas de cada bar.
-
-Toda ésta información se guardará permanentemente en la base de datos.
-
-Contiene diferentes botones botones para cambiar el tamaño de la letra.
-
-También, contiene una sección Hightchart, donde se monitoriza las visitas de los bares, mostrando una gráfica con relación nombre del bar y número de visitas.
-
-
+Para una descripción más extendida, ir la [descripción documentada](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Descripcion.md).
 
 # Infraestructura
 Par la aplicación web necesitamos un soporte que ofrezca una infraestructura que cuente con un servidor web para desplegar la aplicación y que se ejecute en él.
@@ -93,10 +73,19 @@ Si queremos saber más sobre el sistema de tests de Django, podemos entrar [aqu�
 # Integración contínua - Travis-CI
 Para la automatización del proceso de pruebas y para desarrollar el proyecto bajo el concepto de Integración Contínua, he usado [Travis-CI](https://travis-ci.org/) para la integración continua. La configuración para Travis-CI se indica en el fichero .travis.yml.
 
-Para más información, ir [aquí](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Documentacion_Travis.md).
+Para más información, ir [Documentación - Integración Contínua Travis](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Documentacion_Travis.md).
 
 
 # Integración contínua - SNAP-CI
 También hemos integrado contínuamente la aplicación en SNAP-CI.
 
-Para más información, ir [aquí](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Documentacion_Snap.md).
+Para más información, ir [Documentación - Integración Contínua Snap](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Documentacion_Snap.md).
+
+
+# Despliegue en un Iaas - Azure
+Para mi aplicación he elegido como servicio IaaS, usar [Azure](https://azure.microsoft.com/es-es/).
+
+Y para realizar el despliegue en Azure, he usado las herramientas [Ansible](http://www.ansible.com/) y [Vagrant](https://www.vagrantup.com/).
+
+
+Para más información sobre el despligue, ir a [Documentación - Despliegue en Azure](https://github.com/Samuc/Eat-with-Rango/blob/master/Documentacion/Documentacion_Azure.md).

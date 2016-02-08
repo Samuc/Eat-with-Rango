@@ -1,0 +1,34 @@
+- hosts: localhost
+  sudo: yes
+  remote_user: samu
+  tasks:
+  - name: Actualizar cache apt
+    apt: update_cache=yes
+  - name: Instalar python-setuptools
+    apt: name=python-setuptools state=present
+  - name: Instalar python-dev
+    apt: name=python-dev state=present
+  - name: Instalar build-essential
+    apt: name=build-essential state=present
+  - name: Instalar git
+    apt: name=git state=present
+  - name: Instalar pkg-config
+    apt: name=pkg-config state=present
+  - name: Instalar libtiff4-dev
+    apt: name=libtiff4-dev state=present
+  - name: Instalar libjpeg8-dev
+    apt: name=libjpeg8-dev state=present
+  - name: Instalar zlib1g-dev
+    apt: name=zlib1g-dev state=present
+  - name: Instalar PIP
+    shell: sudo easy_install pip
+  - name: Instalar Pillow
+    shell: sudo -H pip install Pillow --upgrade
+  - name: Clonando repositorio desde git
+    git: repo=https://github.com/Samuc/Eat-with-Rango.git  dest=~/Eat-with-Rango clone=yes force=yes
+  - name: Dar permisos a apliacación
+    shell: sudo chmod +x ~/Eat-with-Rango
+  - name: Instalar requisitos para la app
+    shell: sudo pip install -r ~/Eat-with-Rango/requirements.txt
+  - name: Ejecutar aplicacion
+    shell: cd ~/Eat-with-Rango && sudo python manage.py runserver 0.0.0.0:80
