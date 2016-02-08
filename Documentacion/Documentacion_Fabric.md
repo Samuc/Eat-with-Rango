@@ -102,7 +102,7 @@ Ejecutar aplicación:
 ```
 
 Al terminar las 4 órdenes, se ejecutará en la máquina la apliación, tal como vemos en la siguiente imagen:
-![App corriendo utilizando fabric ](http://i.cubeupload.com/oiHhfI.jpg)
+![App corriendo utilizando fabric ](http://i.cubeupload.com/gnrc5B.jpg)
 
 
 Si hacemos el test:
