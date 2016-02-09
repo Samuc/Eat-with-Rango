@@ -23,7 +23,7 @@ Par la aplicación web necesitamos un soporte que ofrezca una infraestructura qu
 Debe utilizar la base de datos alojada en el servidor, en la que se almacenará la información necesaria para la aplicación.
 
 La infraestructura que he utilizado en este proyecto me las ha proporcionado varias opciones.
-Entre ellas, una plataforma PaaS como es heroku, y  las máquinas virtuales que me proporciona la IaaS Azure.
+Entre ellas,  las máquinas virtuales que me proporciona la IaaS Azure.
 
 
 # Herramientas usadas
@@ -33,7 +33,6 @@ Entre ellas, una plataforma PaaS como es heroku, y  las máquinas virtuales que 
 - Paquete django-registration-redux para el registro y login de usuarios
 - Paquete django-easy-maps para mostrar en un mapa la localización de los bares
 - Snap-CI y Travis para la integración contínua
-- Como servicio PaaS he usado Heroku
 - Como servicio IaaS he usado Azure
 - Fabric para el despliegue automático.
 
